@@ -1,14 +1,10 @@
 Header
 - Logo
-- Nav items
-- Tagline
+- Nav items vertical
 
 Home
-- Tagline intro
-- Header photo
-- Summary of services
-- Icon and link out to each service
-- Prompt to contact
+- Photo gallery
+- Thumbnails option (toggle in and out)
 
 About
 - Photo
@@ -19,6 +15,9 @@ Contact
 - Contact form
 - Tagline prompt
 - Written phone number and email
+
+Portfolio
+- Galleries
 
 Services
 - Tagline about services
