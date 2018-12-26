@@ -18,6 +18,10 @@ Contact
 
 Portfolio
 - Galleries
+- name
+- photo
+- Tagline
+- Name/Description
 
 Services
 - Tagline about services

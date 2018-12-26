@@ -9,3 +9,6 @@
 
 /blog
 /blog/post-name
+
+/Galleries
+/galleries/gallery-name
