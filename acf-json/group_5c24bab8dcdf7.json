@@ -1,0 +1,75 @@
+{
+    "key": "group_5c24bab8dcdf7",
+    "title": "About Page",
+    "fields": [
+        {
+            "key": "field_5c24bacdfdd07",
+            "label": "Lead paragraph",
+            "name": "lead_paragraph",
+            "type": "textarea",
+            "instructions": "About Chris section",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Chris Cronin is an editorial, event and portrait photographer who lives in Bristol and works all over the UK.\r\n\r\nIf you want to discuss a future project then please get in touch.",
+            "placeholder": "Chris Cronin is an editorial, event and portrait photographer who lives in Bristol and works all over the UK.",
+            "maxlength": "",
+            "rows": 15,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5c24bb6b46b65",
+            "label": "Main paragraph",
+            "name": "main_paragraph",
+            "type": "textarea",
+            "instructions": "Main part of the about section",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "8"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1545911185
+}
