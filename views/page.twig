@@ -6,10 +6,12 @@
 			<section class="article-content">
 				<h1>{{post.title}}</h1>
 				<p class="article-tagline">{{post.tagline}}</p>
-
 				<div class="article-body">
-					{{post.content}}
-						<pre>{{dump(post)}}</pre>
+					{% block home_gallery %}
+					  {% for image in TimberImage(post.get_field('home_gallery')) %}
+					    <img src="{{ image }}">
+					  {% endfor %}
+					{% endblock %}
 				</div>
 			</section>
 		</article>

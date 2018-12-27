@@ -2,3 +2,9 @@
 {# No specific markup for the home page, yet. Add it here inside a content block! #}
 
 {% extends "page.twig" %}
+
+{% block content %}
+  {% for image in TimberImage(post.get_field('home_gallery')) %}
+    <img src="{{ image }}">
+  {% endfor %}
+{% endblock %}
