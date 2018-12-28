@@ -1,8 +1,8 @@
 .nav-main {
-	background-color: red;
 	max-height: 0;
 	overflow: hidden;
 	transition: all 0.75s ease;
+	width: 30%;
 
 	&.active {
 		max-height: $screen-md;
@@ -18,12 +18,12 @@
 	padding-left: 0;
 
 	@include bp(md) {
-		display: flex;
-		flex-wrap: wrap;
 		& > li {
 		}
 	}
 }
+
+
 
 	.nav-item-link {
 		padding: 1.4rem;

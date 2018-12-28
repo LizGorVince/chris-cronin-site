@@ -9,26 +9,25 @@
 		<header class="site-header">
 			{% block header %}
 				<div class="wrapper">
-					<h1 class="site-logo" role="banner">
-						<a class="site-logo-link" href="{{site.link}}" rel="home">{{site.name}}</a>
-					</h1>
-					<p>{{site.description}}</p>
-					{% include 'partials/nav.twig' %}
+					<img src="site-logo-link" href="{{site.link}}" rel="home">{{site.name}}>
 				</div>
 			{% endblock %}
 		</header>
 
 		<main role="main" class="site-main">
-			<div class="wrapper {{sidebar_class}}">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
-			</div>
+			<div class="main__plus-nav">
+			{% include 'partials/nav.twig' %}
+				<div class="wrapper {{sidebar_class}}">
+					{% block content %}
+						Sorry, no content
+					{% endblock %}
+				</div>
 			{% if sidebar %}
 				<aside class="main-sidebar">
 					{{sidebar}}
 				</aside>
 			{% endif %}
+			</div>
 		</main>
 
 		<footer class="site-footer">

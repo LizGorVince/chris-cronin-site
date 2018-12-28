@@ -546,10 +546,10 @@ input[type=checkbox] {
 }
 
 .nav-main {
-  background-color: red;
   max-height: 0;
   overflow: hidden;
   transition: all 0.75s ease;
+  width: 30%;
 }
 .nav-main.active {
   max-height: 52em;
@@ -564,13 +564,6 @@ input[type=checkbox] {
   list-style-type: none;
   padding-left: 0;
 }
-@media (min-width: 52em) {
-  .nav-items {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-
 .nav-item-link {
   padding: 1.4rem;
 }
@@ -590,7 +583,7 @@ img {
 }
 
 .wrapper {
-  max-width: 52em;
+  max-width: 80em;
   width: 93%;
   margin: 0 auto;
 }
