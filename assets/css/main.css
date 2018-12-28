@@ -549,7 +549,6 @@ input[type=checkbox] {
   max-height: 0;
   overflow: hidden;
   transition: all 0.75s ease;
-  width: 30%;
 }
 .nav-main.active {
   max-height: 52em;
@@ -586,6 +585,15 @@ img {
   max-width: 80em;
   width: 93%;
   margin: 0 auto;
+}
+
+.main__plus-nav {
+  display: flex;
+}
+
+.header__logo {
+  width: 80%;
+  margin: 10px auto;
 }
 
 /*# sourceMappingURL=main.css.map */

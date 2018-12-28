@@ -2,8 +2,7 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all 0.75s ease;
-	width: 30%;
-
+	
 	&.active {
 		max-height: $screen-md;
 	}
