@@ -1,39 +1,69 @@
-.gallery {
+.gallery__slider {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
 
-  @include bp(sm) {
-    width: 80%;
-    padding: 0;
-    margin: 0 auto;
-    overflow: hidden;
+  .slick-list {
+    height: 100%;
+    width: 100%;
     position: relative;
-  }
-
-  .navButton {
-    /* Make buttons look nice */
-    cursor: pointer;
-    float: left;
-    width: 25px;
-    height: 22px;
-    margin-right: 5px;
+    display: block;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+  }
+
+  .slick-slide {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.hero__arrows {
+  display: none;
+
+  @include bp(md) {
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    position: absolute;
+    z-index: 1000;
+  }
+
+  .slick-arrow {
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+    background: $black;
     text-align: center;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    background: #000000;
-    opacity: 0.65;
-    user-select: none;
-  }
-  .navButton:hover {
-    opacity: 1;
-  }
-  .caption {
-    float: right;
-  }
-  .imageContainer:not(:first-child) {
-    /* Hide all images except the first */
-    display: none;
-  }
+    cursor: pointer;
+    transition: background ease 0.15s;
 
+    &:hover,
+    &:focus,
+    &:active {
+      background: lighten($black, 5%);
+    }
 
+    i {
+      line-height: 45px;
+      color: $white;
+    }
+  }
 }

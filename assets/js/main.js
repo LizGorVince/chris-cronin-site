@@ -2,7 +2,27 @@
 // Add your nice, nice JavaScript here
 // And minify! Time to check out Grunt or Gulp - what else to you have to do this weekend?
 
-$(document).ready( function() {
+$(document).ready( function($) {
+
+	// Load JS modules
+	function slickSlider() {
+
+  var $slider = $('.gallery__slider').slick({
+    slidesToShow: 1,
+    autoplay: true,
+    infinite: true,
+    autoplaySpeed: 5000,
+    arrows: true,
+    prevArrow: $('.hero__arrows__prev'),
+    nextArrow: $('.hero__arrows__next'),
+    draggable: true,
+    swipe: true,
+    cssEase: 'linear',
+    fade: true
+  });
+
+}
+
 
 	// Put some nice JavaScript in here.
 	var $nav_main = $('.nav-main'),
@@ -15,42 +35,7 @@ $(document).ready( function() {
 		return false;
 	});
 
-//js for the gallery
 
-$('#previous').on('click', function(){
-    // Change to the previous image
-    $('#im_' + currentImage).stop().fadeOut(1);
-    decreaseImage();
-    $('#im_' + currentImage).stop().fadeIn(1);
-  });
-  $('#next').on('click', function(){
-    // Change to the next image
-    $('#im_' + currentImage).stop().fadeOut(1);
-    increaseImage();
-    $('#im_' + currentImage).stop().fadeIn(1);
-  });
-
-  var currentImage = 1;
-  var totalImages = 3;
-
-  function increaseImage() {
-    /* Increase currentImage by 1.
-    * Resets to 1 if larger than totalImages
-    */
-    ++currentImage;
-    if(currentImage > totalImages) {
-      currentImage = 1;
-    }
-  }
-  function decreaseImage() {
-    /* Decrease currentImage by 1.
-    * Resets to totalImages if smaller than 1
-    */
-    --currentImage;
-    if(currentImage < 1) {
-      currentImage = totalImages;
-    }
-  }
 
 
 });

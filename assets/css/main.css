@@ -511,6 +511,9 @@ input[type="checkbox"] {
   letter-spacing: 0.1em;
   font-size: 14px;
   font-weight: bold; }
+  @media (min-width: 52em) {
+    .nav-trigger-div {
+      display: none; } }
 
 @media (min-width: 52em) {
   .nav-trigger {
@@ -558,36 +561,55 @@ footer {
   width: 80%;
   margin: 0 auto; }
 
-@media (min-width: 35em) {
-  .gallery {
-    width: 80%;
-    padding: 0;
-    margin: 0 auto;
+.gallery__slider {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto; }
+  .gallery__slider .slick-list {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: block;
     overflow: hidden;
-    position: relative; } }
+    margin: 0;
+    padding: 0; }
+  .gallery__slider .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%; }
+  .gallery__slider .slick-slide {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: cover; }
 
-.gallery .navButton {
-  /* Make buttons look nice */
-  cursor: pointer;
-  float: left;
-  width: 25px;
-  height: 22px;
-  margin-right: 5px;
-  overflow: hidden;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  background: #000000;
-  opacity: 0.65;
-  user-select: none; }
-
-.gallery .navButton:hover {
-  opacity: 1; }
-
-.gallery .caption {
-  float: right; }
-
-.gallery .imageContainer:not(:first-child) {
-  /* Hide all images except the first */
+.hero__arrows {
   display: none; }
+  @media (min-width: 52em) {
+    .hero__arrows {
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: right;
+      position: absolute;
+      z-index: 1000; } }
+  .hero__arrows .slick-arrow {
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+    background: #1F232A;
+    text-align: center;
+    cursor: pointer;
+    transition: background ease 0.15s; }
+    .hero__arrows .slick-arrow:hover, .hero__arrows .slick-arrow:focus, .hero__arrows .slick-arrow:active {
+      background: #2a2f39; }
+    .hero__arrows .slick-arrow i {
+      line-height: 45px;
+      color: #fefefe; }

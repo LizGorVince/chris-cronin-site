@@ -6,27 +6,22 @@
 			<section class="article-content">
 				{# <h1>{{post.title}}</h1> #}
 				{# <p class="article-tagline">{{post.tagline}}</p> #}
-				<div class="article-body">
-					<div class="gallery">
-						<div id="showContainer">
+					<div class="gallery__slider">
+						<div class="gallery__slider__slide">
 							{% block gallery %}
 							  {% for image in TimberImage(post.get_field('gallery')) %}
-								<div class="imageContainer" id="im_{% for item in items %}
-  																								{% set counter = ( counter | default(0) ) + 1 %}
-  																								{{ counter ~ ' ). ' ~ item.title }}
-																									{% endfor %}">
 									<img src="{{ image }}">
-									<div class="caption">
-									{{title}}
-									</div>
-								</div>
 							  {% endfor %}
+
+								<div class="hero__arrows">
+					      <div class="container">
+					        <span class="hero__arrows__prev slick-arrow"><i class="fas fa-chevron-left"></i></span>
+					        <span class="hero__arrows__next slick-arrow"><i class="fas fa-chevron-right"></i></span>
+					      </div>
+					    </div>
 							{% endblock %}
-							<div class="navButton" id="previous">&#10094;</div>
-							<div class="navButton" id="next">&#10095;</div>
 						</div>
 					</div>
-				</div>
 			</section>
 		</article>
 	</div><!-- /content-wrapper -->

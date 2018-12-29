@@ -36,6 +36,10 @@
 	letter-spacing: 0.1em;
 	font-size: 14px;
 	font-weight: bold;
+
+	@include bp(md) {
+		display: none;
+	}
 }
 
 .nav-trigger {
