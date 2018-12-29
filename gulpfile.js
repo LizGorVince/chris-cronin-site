@@ -49,10 +49,4 @@ gulp.task('svgs', function () {
     .pipe(gulp.dest('views/utility'));
 });
 
-//Watch task
-gulp.task('default',
-  gulp.series('clean', gulp.parallel('scripts', 'styles'),
-  function() {
-    ...
-  }
-));
+gulp.task('default', ['watch']);

@@ -16,25 +16,29 @@
 .nav-items {
 	list-style-type: none;
 	padding-left: 0;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-size: 14px;
+	font-weight: bold;
 
-	@include bp(md) {
-		& > li {
-			margin: 20px;
-		}
+	& > li {
+		margin-bottom: 15px;
 	}
 }
 
-
-
-	.nav-item-link {
-		padding: 1.4rem;
-	}
-
-
 // Link to open the nav
 
-.nav-trigger {
+.nav-trigger-div {
+	margin: 10px auto;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-size: 14px;
+	font-weight: bold;
+}
 
+.nav-trigger {
 	@include bp(md) {
 		display: none;
 	}
