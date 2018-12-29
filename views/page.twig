@@ -5,13 +5,27 @@
 		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
 			<section class="article-content">
 				{# <h1>{{post.title}}</h1> #}
-				<p class="article-tagline">{{post.tagline}}</p>
+				{# <p class="article-tagline">{{post.tagline}}</p> #}
 				<div class="article-body">
-					{% block home_gallery %}
-					  {% for image in TimberImage(post.get_field('home_gallery')) %}
-					    <img src="{{ image }}">
-					  {% endfor %}
-					{% endblock %}
+					<div class="gallery">
+						<div id="showContainer">
+							{% block gallery %}
+							  {% for image in TimberImage(post.get_field('gallery')) %}
+								<div class="imageContainer" id="im_{% for item in items %}
+  																								{% set counter = ( counter | default(0) ) + 1 %}
+  																								{{ counter ~ ' ). ' ~ item.title }}
+																									{% endfor %}">
+									<img src="{{ image }}">
+									<div class="caption">
+									{{title}}
+									</div>
+								</div>
+							  {% endfor %}
+							{% endblock %}
+							<div class="navButton" id="previous">&#10094;</div>
+							<div class="navButton" id="next">&#10095;</div>
+						</div>
+					</div>
 				</div>
 			</section>
 		</article>

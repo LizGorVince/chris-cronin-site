@@ -422,12 +422,12 @@ body {
 a,
 a:visited,
 a:link {
-  color: #45B29D;
+  color: #1F232A;
   text-decoration: none;
 }
 
 a:hover, a:focus {
-  color: #29685c;
+  color: black;
 }
 a:active {
   color: black;
@@ -520,7 +520,7 @@ input[type=url],
 input[type=search],
 input[type=tel] {
   width: 100%;
-  border: 1px dotted #45B29D;
+  border: 1px dotted #1F232A;
 }
 textarea:focus,
 input[type=text]:focus,
@@ -536,7 +536,7 @@ input[type=email]:focus,
 input[type=url]:focus,
 input[type=search]:focus,
 input[type=tel]:focus {
-  border-color: #45B29D;
+  border-color: #1F232A;
 }
 
 input[type=radio],
@@ -556,6 +556,7 @@ input[type=checkbox] {
 @media (min-width: 52em) {
   .nav-main {
     max-height: none;
+    width: 240px;
   }
 }
 
@@ -563,6 +564,12 @@ input[type=checkbox] {
   list-style-type: none;
   padding-left: 0;
 }
+@media (min-width: 52em) {
+  .nav-items > li {
+    margin: 20px;
+  }
+}
+
 .nav-item-link {
   padding: 1.4rem;
 }
@@ -584,16 +591,63 @@ img {
 .wrapper {
   max-width: 80em;
   width: 93%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
+@media print {
+  html, body {
+    display: none;
+    /* hide whole page */
+  }
+}
 .main__plus-nav {
-  display: flex;
+  display: block;
+}
+@media (min-width: 52em) {
+  .main__plus-nav {
+    display: flex;
+  }
 }
 
 .header__logo {
   width: 80%;
-  margin: 10px auto;
+  margin: 0 auto;
+}
+
+@media (min-width: 35em) {
+  .gallery {
+    width: 80%;
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+}
+.gallery .navButton {
+  /* Make buttons look nice */
+  cursor: pointer;
+  float: left;
+  width: 25px;
+  height: 22px;
+  margin-right: 5px;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  background: #000000;
+  opacity: 0.65;
+  user-select: none;
+}
+.gallery .navButton:hover {
+  opacity: 1;
+}
+.gallery .caption {
+  float: right;
+}
+.gallery .imageContainer:not(:first-child) {
+  /* Hide all images except the first */
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -2,13 +2,14 @@
 	max-height: 0;
 	overflow: hidden;
 	transition: all 0.75s ease;
-	
+
 	&.active {
 		max-height: $screen-md;
 	}
 
 	@include bp(md) {
 		max-height: none;
+	  width: 240px;
 	}
 }
 
@@ -18,6 +19,7 @@
 
 	@include bp(md) {
 		& > li {
+			margin: 20px;
 		}
 	}
 }

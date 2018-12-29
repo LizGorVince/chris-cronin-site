@@ -7,20 +7,25 @@
 
 	<body class="{{body_class}}" data-template="base.twig">
 
-		<div class="main__plus-nav">
+		<div class="main__plus-nav wrapper">
 			<header class="site-header">
 				{% block header %}
 				<div class="header__logo">
 					<a href="{{ site.url }}" alt="{{ site.title }}, {{ site.description }}">
-					{{ source('/assets/img/logo/bmj-logo.svg') }}
+					{{ source('/assets/img/logo/chris-cronin-logo.svg') }}
 					</a>
 				</div>
 				{% endblock %}
 				{% include 'partials/nav.twig' %}
+				<div id="slide-controls" style="display: block;" class="wrapper">
+          <a href="#" class="show-thumbnails">Show Thumbnails</a>
+          <a href="#" class="prev">Prev</a> <span class="slidecontline">/</span> <a href="#" class="next">Next</a>
+          <p style="margin:10px 0 0 0"><span class="slide-current-count">1</span><span class="slide-punctuation">  /  </span><span class="slide-count">33</span></p>
+      	</div>
 			</header>
 
 			<main role="main" class="site-main">
-					<div class="wrapper {{sidebar_class}}">
+					<div class="{{sidebar_class}}">
 						{% block content %}
 							Sorry, no content
 						{% endblock %}

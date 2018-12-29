@@ -1,3 +1,7 @@
 .main__plus-nav {
-  display: flex;
+  display: block;
+  
+  @include bp(md) {
+    display: flex;
+  }
 }

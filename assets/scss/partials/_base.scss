@@ -41,7 +41,7 @@ img {
 .wrapper {
 	max-width: $screen-xl; // I'm using a pretty narrow wrapper, you might want this to be $screen-lg depending on your layout.
 	width: 93%;
-	margin: 0 auto;
+	margin: 20px auto;
 }
 
 
@@ -50,7 +50,11 @@ img {
 // Media
 // ---
 
-
+@media print {
+  html, body {
+     display: none;  /* hide whole page */
+  }
+}
 
 
 // ---
