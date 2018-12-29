@@ -17,11 +17,6 @@
 				</div>
 				{% endblock %}
 				{% include 'partials/nav.twig' %}
-				<div id="slide-controls" style="display: block;" class="wrapper">
-          <a href="#" class="show-thumbnails">Show Thumbnails</a>
-          <a href="#" class="prev">Prev</a> <span class="slidecontline">/</span> <a href="#" class="next">Next</a>
-          <p style="margin:10px 0 0 0"><span class="slide-current-count">1</span><span class="slide-punctuation">  /  </span><span class="slide-count">33</span></p>
-      	</div>
 			</header>
 
 			<main role="main" class="site-main">
@@ -40,11 +35,10 @@
 
 		<footer class="site-footer">
 			{% block footer %}
-				<div class="wrapper">
-					{% include 'footer.twig' %}
-				</div>
+					<div class="site-footer__copy">{% include 'footer.twig' %}</div>
 			{% endblock %}
 		</footer>
+
 		{{ function('wp_footer') }}
 
 	</body>

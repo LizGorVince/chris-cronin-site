@@ -16,6 +16,7 @@
 	 box-sizing: border-box;
 }
 
+
 // ---
 // General Selectors
 // ---
@@ -42,6 +43,7 @@ img {
 	max-width: $screen-xl; // I'm using a pretty narrow wrapper, you might want this to be $screen-lg depending on your layout.
 	width: 93%;
 	margin: 20px auto;
+	min-height: 1vh;
 }
 
 
@@ -61,7 +63,25 @@ img {
 // Footer
 // ---
 
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: $white;
+	display: inline-block;
+	border-top: 1px solid lighten($black, 80%);
+	width: 100%;
+	z-index: 9999999;
 
+	.site-footer__copy {
+		padding: 20px;
+		color: lighten($black, 50%);
+
+		small {
+			font-size: 12px;
+		}
+	}
+}
 
 
 // ---

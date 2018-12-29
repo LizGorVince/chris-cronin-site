@@ -371,16 +371,18 @@ th {
 
 body {
   font-family: Helvetica, sans-serif;
-  line-height: 1.5; }
+  line-height: 1.5;
+  height: 100%; }
 
 a,
 a:visited,
 a:link {
   color: #606c82;
-  text-decoration: none; }
+  text-decoration: none;
+  display: block; }
 
 a:hover, a:focus {
-  color: #353b47; }
+  color: black; }
 
 a:active {
   color: black; }
@@ -523,12 +525,28 @@ img {
 .wrapper {
   max-width: 80em;
   width: 93%;
-  margin: 20px auto; }
+  margin: 20px auto;
+  min-height: 1vh; }
 
 @media print {
   html, body {
     display: none;
     /* hide whole page */ } }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fefefe;
+  display: inline-block;
+  border-top: 1px solid #eef0f3;
+  width: 100%;
+  z-index: 9999999; }
+  footer .site-footer__copy {
+    padding: 20px;
+    color: #96a0b2; }
+    footer .site-footer__copy small {
+      font-size: 12px; }
 
 .main__plus-nav {
   display: block; }

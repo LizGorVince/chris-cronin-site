@@ -52,7 +52,7 @@ $color-notice-warning:	 $orange;
 
 // Then element-based names are nice too
 $color-link: 		       lighten($color-accent-med, 30%);
-$color-link-hover: 		 darken($color-link, 20%);
+$color-link-hover: 		 darken($color-link, 60%);
 $color-link-active: 	 darken($color-link, 60%);
 
 // The most commonly rotated color:
