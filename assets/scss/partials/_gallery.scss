@@ -1,7 +1,12 @@
 .gallery__slider {
-  width: 80%;
+  width: 90%;
   height: 80%;
   margin: 0 auto;
+
+  @include bp(md) {
+    float: right;
+    width: 70%;
+  }
 
   .slick-list {
     height: 100%;
