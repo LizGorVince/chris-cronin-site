@@ -1,54 +1,43 @@
-// Vendor Dependencies
-@import "vendor/normalize";
-@import "vendor/proportional-grids";
 
-// Global Files
-@import "utilities/helpers";
+// ----
+//
+// Table of Contents
+//
+// Import all our layouts here. Don't add styles to this file, keep everything separated into the partials - it helps to keep the code in reusable chunks.
+//
+// ----
 @import "utilities/variables";
 @import "utilities/mixins";
-@import "utilities/shame";
-@import "core/global";
+@import "utilities/helpers";
 
-// Layout / Grids
-@import "core/breakpoints";
-@import "core/grid";
 
-// Basic Global Elements
-@import "core/colour";
-@import "core/font";
-@import "core/typography";
-@import "core/layout";
-@import "core/button";
-@import "core/form";
-@import "core/media";
-@import "core/icon";
-@import "core/animations";
-@import "core/base";
-@import "core/body";
-@import "core/nav";
-@import "core/gallery";
 
-// Individual Modules
-@import "modules/account-list";
-@import "modules/app-block";
-@import "modules/article-list";
-@import "modules/block-title";
-@import "modules/breadcrumb";
-@import "modules/country-picker";
-@import "modules/featured-block";
-@import "modules/hero";
-@import "modules/image-block";
-@import "modules/link-list";
-@import "modules/pagination";
-@import "modules/posts";
-@import "modules/quote-block";
-@import "modules/social-icons";
-
-// Individual Layouts
 @import "layouts/footer";
 @import "layouts/header";
-@import "layouts/main-nav";
 
-// Vendor Specific
-@import "vendor/micromodal";
-@import "vendor/fractal";
+
+//--
+// 2. Import our variables and mixins.
+//    Other than the helpers file, this code doesn't actually compile to anything - just utilities to be used throughout the partials.
+//--
+
+
+
+
+//--
+// 3. Import our actual styles.
+//    See the files for descriptions of their contents. You can add any other partials you see fit - for example, WordPress might have a _posts.scss partial.
+//--
+
+@import "modules/typography";
+@import "modules/buttons";
+@import "modules/forms";
+@import "modules/nav";
+@import "modules/base";
+@import "modules/gallery";
+
+
+//--
+// 4. Import shameful styles.
+//    Uh oh, what's this? A technique developed by the ingenious Harry Roberts (http://j.mp/shamecss), the _shame.scss contains all of the styles you know you shouldn't be doing. This might include !importants, hacky overrides, or verbose styles you know can be done differenty. The idea is that you have all of them in one place to address later.
+//--

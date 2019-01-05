@@ -1,0 +1,45 @@
+.nav-main {
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.75s ease;
+
+	&.active {
+		max-height: $screen-md;
+	}
+
+	@include bp(md) {
+		max-height: none;
+	}
+}
+
+.nav-items {
+	list-style-type: none;
+	padding-left: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-size: 14px;
+	font-weight: bold;
+	display: block;
+	text-align: center;
+	margin-bottom: 20px;
+	
+	@include bp(md) {
+
+		& > li {
+		}
+	}
+}
+
+	.nav-item-link {
+	}
+
+
+// Link to open the nav
+
+.nav-trigger {
+
+	@include bp(md) {
+		display: none;
+	}
+
+}
