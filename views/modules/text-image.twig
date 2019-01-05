@@ -1,0 +1,58 @@
+{% if not hide_block %}
+
+<div class="content {% if padding_top %}content--no-top{% endif %} {% if padding_bottom %}content--no-bottom{% endif %}">
+  <div class="container">
+
+    {% if block_title_image %}
+      <div class="block-title">
+    {% endif %}
+
+    {% if block_title %}
+      <div class="block-title__top">
+        {% if block_title_image %}
+          <span class="block-title__image"><img src="{{ block_title_image.url }}" alt="{{ block_title_image.title }}" /></span>
+        {% endif %}
+        <h2 class="underline text-blue">{{ block_title_text }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="g-wrap">
+      {% if reverse %}
+
+        <div class="g-col gt-col-1-2">
+          {% if text_image_title %}
+            <h2 class="text-blue">{{ text_image_title }}</h2>
+          {% endif %}
+          {{ text_image_content }}
+        </div>
+        <div class="g-col gt-col-1-2 image-full">
+          {% if text_image_image %}
+            <img src="{{ text_image_image.url }}" alt="{{ text_image_image.title }}">
+          {% endif %}
+        </div>
+
+      {% else %}
+
+        <div class="g-col gt-col-1-2 image-full">
+          {% if text_image_image %}
+            <img src="{{ text_image_image.url }}" alt="{{ text_image_image.title }}">
+          {% endif %}
+        </div>
+        <div class="g-col gt-col-1-2">
+          {% if text_image_title %}
+            <h2 class="text-blue">{{ text_image_title }}</h2>
+          {% endif %}
+          {{ text_image_content }}
+        </div>
+
+      {% endif %}
+    </div>
+
+    {% if block_title_image %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endif %}

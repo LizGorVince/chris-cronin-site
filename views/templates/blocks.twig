@@ -1,0 +1,252 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+{# Show breadrumbs on every page but the homepage #}
+{% if not fn('is_front_page') %}
+  {% include "modules/breadcrumb.twig" %}
+{% endif %}
+
+{# IF - the current page User Access is set to Open OR matches the current logged in/logged out status #}
+{% if post.get_field('user_access') == status or post.get_field('user_access') == "open" %}
+
+{# IF - content is added to main wysiwyg editor section, display this #}
+{% if post.content %}
+
+  <div class="content">
+    <div class="container">
+      {{ post.content }}
+    </div>
+  </div>
+
+{# ELSE - display our repeater block content fields #}
+{% else %}
+
+  {# Get the content blocks ACF repeater object and loop through - include the relevant twig file and post content variables #}
+  {% for content_block in post.get_field('content_blocks') %}
+
+    {# IF - the Hide Block option is not selected #}
+    {% if not content_block.hide_block %}
+
+      {# IF - Content Block is set to Open OR matches the current logged in/logged out status #}
+      {% if content_block.user_access == status or content_block.user_access == "open" %}
+
+        {# IF - Content block country access is set to Open OR matches the current session country #}
+        {% if session_country in content_block.region_access|join(' ') == session_country or content_block.region_access|join(' ') == "open" %}
+
+          {# IF - Content Block initiative is set to Open OR matches the current session initiative #}
+          {% if session_initiative in content_block.initiative_access|join(' ') == session_initiative or content_block.initiative_access|join(' ') == "open" %}
+
+            {# Hero Block #}
+            {% if content_block.block_type == 'hero' %}
+              {% set hero_acf = {
+                'block_title' : content_block.block_title,
+                'block_title_text' : content_block.block_title_text,
+                'block_title_image' : content_block.block_title_image,
+                'hero_type' : content_block.hero_type,
+                'hero_slides' : content_block.hero_slides,
+                'hero_images' : content_block.hero_images,
+                'hero_title' : content_block.hero_title,
+                'hero_copy' : content_block.hero_copy,
+                'hero_cta' : content_block.hero_cta,
+                'hero_cta_colour' : content_block.hero_cta_colour,
+                'hero_bg_colour' : content_block.hero_bg_colour
+              } %}
+              {% include "modules/hero.twig" with hero_acf %}
+
+            {# Text + Image Block #}
+            {% elseif content_block.block_type == 'text-image' %}
+              {% set text_image_acf = {
+                'block_title' : content_block.block_title,
+                'block_title_text' : content_block.block_title_text,
+                'block_title_image' : content_block.block_title_image,
+                'reverse' : content_block.reverse_blocks,
+                'text_image_title' : content_block.text_image_title,
+                'text_image_content' : content_block.text_image_content,
+                'text_image_image' : content_block.text_image_image,
+                'padding_top' : content_block.padding_top,
+                'padding_bottom' : content_block.padding_bottom
+              } %}
+              {% include "modules/text-image.twig" with text_image_acf %}
+
+            {# Text + Text Block #}
+            {% elseif content_block.block_type == 'text-text' %}
+              {% set text_text_acf = {
+                'reverse' : content_block.reverse_blocks,
+                'text_text_title' : content_block.text_text_title,
+                'text_text_first' : content_block.text_text_first,
+                'text_text_first_button' : content_block.text_text_first_button,
+                'text_text_first_colour' : content_block.text_text_first_colour,
+                'text_text_second' : content_block.text_text_second,
+                'text_text_second_button' : content_block.text_text_second_button,
+                'text_text_second_colour' : content_block.text_text_second_colour,
+                'padding_top' : content_block.padding_top,
+                'padding_bottom' : content_block.padding_bottom,
+                'text_text_clean' : content_block.text_text_clean
+              } %}
+              {% include "modules/text-text.twig" with text_text_acf %}
+
+            {# Quote Block #}
+            {% elseif content_block.block_type == 'quote' %}
+              {% set quote_acf = {
+                'block_width' : content_block.block_width,
+                'block_title' : content_block.block_title,
+                'block_title_text' : content_block.block_title_text,
+                'block_title_image' : content_block.block_title_image,
+                'quote_image' : content_block.quote_image,
+                'quote_text' : content_block.quote_text,
+                'quote_cite' : content_block.quote_cite
+              } %}
+              {% include "modules/quote-block.twig" with quote_acf %}
+
+            {# Image Block #}
+            {% elseif content_block.block_type == 'image' %}
+              {% set image_acf = {
+                'block_width' : content_block.block_width,
+                'block_title' : content_block.block_title,
+                'block_title_text' : content_block.block_title_text,
+                'block_title_image' : content_block.block_title_image,
+                'image_first' : content_block.image_first,
+                'image_second' : content_block.image_second
+              } %}
+              {% include "modules/image-block.twig" with image_acf %}
+
+            {# WYSIWYG Block #}
+            {% elseif content_block.block_type == 'wysiwyg' %}
+              {% set wysiwyg_acf = {
+                'block_width' : content_block.block_width,
+                'block_title' : content_block.block_title,
+                'block_title_text' : content_block.block_title_text,
+                'block_title_image' : content_block.block_title_image,
+                'wysiwyg_block' : content_block.wysiwyg_block,
+                'padding_top' : content_block.padding_top,
+                'padding_bottom' : content_block.padding_bottom
+              } %}
+              {% include "modules/blank-content-block.twig" with wysiwyg_acf %}
+
+            {# Form Block #}
+            {% elseif content_block.block_type == 'form' %}
+              {% set form_acf = {
+                'block_width' : content_block.block_width,
+                'block_title' : content_block.block_title,
+                'block_title_text' : content_block.block_title_text,
+                'block_title_image' : content_block.block_title_image,
+                'form_embed' : content_block.form_embed,
+                'padding_top' : content_block.padding_top,
+                'padding_bottom' : content_block.padding_bottom
+              } %}
+              {% include "modules/blank-content-block.twig" with form_acf %}
+
+            {# Products Block #}
+            {% elseif content_block.block_type == 'products' %}
+              {% include "modules/products.twig" %}
+
+            {# App Block #}
+            {% elseif content_block.block_type == 'app' %}
+              {% set app_block_acf = {
+                'block_width' : content_block.block_width,
+                'block_title' : content_block.block_title,
+                'block_title_text' : content_block.block_title_text,
+                'block_title_image' : content_block.block_title_image,
+                'padding_top' : content_block.padding_top,
+                'padding_bottom' : content_block.padding_bottom
+              } %}
+              {% include "modules/app-block.twig" with app_block_acf %}
+
+            {# Feature Content Block #}
+            {% elseif content_block.block_type == 'featured' %}
+              {% set featured_acf = {
+                'block_title' : content_block.block_title,
+                'block_title_text' : content_block.block_title_text,
+                'block_title_image' : content_block.block_title_image,
+                'featured_title' : content_block.featured_title,
+                'featured_text' : content_block.featured_text,
+                'featured_link' : content_block.featured_link,
+                'featured_icon' : content_block.featured_icon
+              } %}
+              {% include "modules/featured-block.twig" with featured_acf %}
+
+            {# 2 Columns Block #}
+            {% elseif content_block.block_type == 'columns' %}
+
+              <div class="content">
+                <div class="container">
+                  <div class="g-wrap">
+                    <div class="g-col gt-col-1-2">
+                      {% if content_block.column_1_type == 'links' %}
+                        {% set link_list_acf = {
+                          'hide_block' : content_block.hide_block,
+                          'block_width' : content_block.block_width,
+                          'block_title' : content_block.block_title_col1,
+                          'block_title_text' : content_block.block_title_text_col1,
+                          'block_title_image' : content_block.block_title_image_col1,
+                          'links' : content_block.links
+                        } %}
+                      {% include "modules/link-list.twig" with link_list_acf %}
+                      {% elseif content_block.column_1_type == 'articles' %}
+                        {% set article_list_acf = {
+                          'hide_block' : content_block.hide_block,
+                          'block_width' : content_block.block_width,
+                          'block_title' : content_block.block_title_col1,
+                          'block_title_text' : content_block.block_title_text_col1,
+                          'block_title_image' : content_block.block_title_image_col1,
+                          'articles_button' : content_block.articles_button,
+                          'articles_button_colour' : content_block.articles_button_colour
+                        } %}
+                        {% include "modules/article-list.twig" with article_list_acf %}
+                      {% elseif content_block.column_1_type == 'blank' %}
+                        {{ content_block.column_wysiwyg_block }}
+                      {% endif %}
+                    </div>
+                    <div class="g-col gt-col-1-2">
+                      {% if content_block.column_2_type == 'links' %}
+                        {% set link_list_acf = {
+                          'hide_block' : content_block.hide_block,
+                          'block_width' : content_block.block_width,
+                          'block_title' : content_block.block_title_col2,
+                          'block_title_text' : content_block.block_title_text_col2,
+                          'block_title_image' : content_block.block_title_image_col2,
+                          'links' : content_block.links
+                        } %}
+                        {% include "modules/link-list.twig" with link_list_acf %}
+                      {% elseif content_block.column_2_type == 'articles' %}
+                        {% set article_list_acf = {
+                          'hide_block' : content_block.hide_block,
+                          'block_width' : content_block.block_width,
+                          'block_title' : content_block.block_title_col2,
+                          'block_title_text' : content_block.block_title_text_col2,
+                          'block_title_image' : content_block.block_title_image_col2,
+                          'articles_button' : content_block.articles_button,
+                          'articles_button_colour' : content_block.articles_button_colour
+                        } %}
+                        {% include "modules/article-list.twig" with article_list_acf %}
+                      {% elseif content_block.column_2_type == 'blank' %}
+                        {{ content_block.column_wysiwyg_block }}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            {% endif %}
+          {% endif %}
+
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{# ELSEIF - if user needs to be logged in - redirect the current page to the Login Page #}
+{% elseif post.get_field('user_access') == "loggedin" %}
+
+  {% do action( 'redirect-to-login' ) %}
+
+{# ELSE - redirect the current page to the Home Page #}
+{% elseif post.get_field('user_access') == "loggedout" %}
+
+  {% do action( 'redirect-to-home' ) %}
+
+{% endif %}
+
+{% endblock %}

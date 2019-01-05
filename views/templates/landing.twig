@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+{% include "modules/breadcrumb.twig" %}
+
+<div class="content">
+  <div class="container">
+    <div class="block-title__top">
+      <h1 class="underline">{{ post.title }}</h1>
+      {{ post.content }}
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+
+    {% if post.children('page') %}
+      <div class="posts__list">
+        {% for child in post.children('page') %}
+
+          <div class="post post--list">
+            <div class="post__thumb">
+              <a href="{{ child.link }}">
+                <img src="{{ child.thumbnail.src }}">
+              </a>
+            </div>
+            <div class="post__excerpt">
+              <a href="{{ child.link }}">
+                <h2>{{ child.title }}</h2>
+              </a>
+              {{ child.get_field('page_excerpt') }}
+            </div>
+          </div>
+
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

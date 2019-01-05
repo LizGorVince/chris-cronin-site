@@ -1,0 +1,64 @@
+/*
+  MEDIA
+  Responsive images and videos
+*/
+
+img, svg {
+  display: block;
+  max-width: 100%;
+
+  &.aligncenter {
+    display: inline;
+  }
+
+  &.alignright {
+    float: right;
+  }
+
+  &.alignleft {
+    float: left;
+  }
+}
+
+video { // html5 element
+}
+
+.featured-image {
+  margin-bottom: 2em;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.image-full {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Makes iframe responsive! E.g. youtube embeds, google maps etc
+// http://webdesignerwall.com/tutorials/css-elastic-videos
+.responsive-media {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 1em 0;
+
+  @include respond-min($bp-tablet-lrg-min) {
+    margin: 2em 0;
+  }
+
+  iframe,
+  object,
+  embed {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

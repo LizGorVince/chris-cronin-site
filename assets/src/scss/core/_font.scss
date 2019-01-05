@@ -1,0 +1,39 @@
+/*
+  FONTS
+*/
+
+// Default font stacks
+$f-arial: Arial, sans-serif;
+$f-helvetica: "Helvetica Neue", Helvetica, $f-arial;
+
+// Custom typekit font stack
+$f-interface: "interface", $f-helvetica;
+
+.interface {
+  font-family: $f-interface;
+}
+
+.interface--light {
+  @extend .interface;
+  font-weight: 300;
+}
+
+.interface--regular {
+  @extend .interface;
+  font-weight: 400;
+}
+
+.interface--italic {
+  @extend .interface;
+  font-style: italic;
+}
+
+.interface--bold {
+  @extend .interface;
+  font-weight: 700;
+}
+
+.interface--extra-bold {
+  @extend .interface;
+  font-weight: 800;
+}

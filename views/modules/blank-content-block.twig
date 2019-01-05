@@ -1,0 +1,34 @@
+{% if not hide_block %}
+
+<div class="content {% if padding_top %}content--no-top{% endif %} {% if padding_bottom %}content--no-bottom{% endif %}">
+  <div class="container">
+
+    {% if block_title_image %}
+      <div class="block-title">
+    {% endif %}
+
+    {% if block_title %}
+      <div class="block-title__top">
+        {% if block_title_image %}
+          <span class="block-title__image"><img src="{{ block_title_image.url }}" alt="{{ block_title_image.title }}" /></span>
+        {% endif %}
+        <h2 class="underline text-blue">{{ block_title_text }}</h2>
+      </div>
+    {% endif %}
+
+    {% if wysiwyg_block %}
+      {{ wysiwyg_block }}
+    {% endif %}
+
+    {% if form_embed %}
+      {{ form_embed }}
+    {% endif %}
+
+    {% if block_title_image %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endif %}

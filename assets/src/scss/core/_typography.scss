@@ -1,0 +1,338 @@
+/*
+  TYPOGRAPHY
+*/
+
+// Required: these font-breakpoint maps need to match the respond-min value of each grid setup in _grid.scss
+$typography-breakpoints: (
+  g   : 0,                          // g-col
+  gw  : $bp-tablet-min,             // gw-col
+  gt  : $bp-tablet-lrg-min,         // gt-col
+  gtw : $bp-tablet-wide-min,        // gtw-col
+  gd  : $bp-desktop-min,            // gd-col
+  gdm : $bp-desktop-wide-min,       // gdm-col
+);
+
+// FONT SIZES
+$fs-h1: ( g : 24, gt : 26, gd : 31 );
+$fs-h2: ( g : 21, gt : 24, gd : 26 );
+$fs-h3: ( g : 18, gt : 20, gd : 24 );
+$fs-h4: ( g : 18, gt : 18, gd : 20 );
+$fs-bq: ( g : 16, gt : 21, gd : 24 );
+$fs-content-large: ( g : 18, gd : 20 );
+$fs-content-p: ( g : 16, gd : 18 );
+$fs-content-small: ( g : 14, gd : 16 );
+$fs-content-smaller: ( g : 14 );
+
+// MIXINS
+@mixin fs-static($size_in_px) {
+  @include respond-min(0) {
+    font-size: #{$size_in_px}px;
+    font-size: #{calculate-rem($size_in_px)}rem;
+  }
+}
+
+@mixin fs-responsive($fs-map, $fs-breakpoints: $typography-breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @include respond-min($fs-breakpoint) {
+        font-size: #{$fs-font-size}px;
+        font-size: #{calculate-rem($fs-font-size)}rem;
+      }
+    }
+  }
+}
+
+// Line height (unitless preferred)
+$lh: (
+ expanded: 1.75,
+ base: 1.5,
+ tighter: 1.35,
+ condensed: 1.25,
+ compressed: 1.15,
+ crushed: 1,
+ smashed: 0.9,
+ negative: 0.75
+);
+
+// Font Weights
+$fw-light: 300;
+$fw-regular: 400;
+$fw-bold: 700;
+$fw-extra-bold: 800;
+
+// Helper for line heights
+@mixin lh($key) {
+ @if map-has-key($lh, $key) {
+   line-height: map-get($lh, $key);
+ }
+ @else {
+   @warn "Unknown '#{$key}' in map $lh.";
+ }
+}
+
+// Letter Spacing
+$ls-stretched: 0.2em;
+$ls-wide: 0.05em;
+$ls-med-wide: 0.02em;
+$ls-tightish: -0.02em;
+$ls-tighter: -0.03em;
+$ls-narrow: -0.05em;
+
+// Typographical defaults
+body {
+  color: $clr-body;
+  font-family: $f-interface;
+  font-weight: $fw-regular;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility; // aestheticallyloyal.com/public/optimize-legibility/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-wrap: break-word;
+  -webkit-text-size-adjust: 100%; // Prevents iOS orientation font resize bug
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $fw-bold;
+  margin: 0 0 1em 0;
+}
+
+h1, .fs-h1 {
+  @include fs-responsive($fs-h1);
+}
+
+h2, .fs-h2 {
+  @include fs-responsive($fs-h2);
+}
+
+h3, .fs-h3 {
+  @include fs-responsive($fs-h3);
+}
+
+h4, h5, h6, .fs-h4 {
+  @include fs-responsive($fs-h4);
+}
+
+p {
+  @include fs-responsive($fs-content-p);
+  line-height: 1.5;
+  margin: 0 0 1em 0;
+}
+
+a {
+  @include fs-responsive($fs-content-p);
+  line-height: 1.5;
+  color: $clr-blue;
+  text-decoration: none;
+
+  p & {
+    @include standard-link($clr-blue);
+  }
+}
+
+strong, b {
+  font-weight: $fw-bold;
+}
+
+small,
+.small {
+  @include fs-responsive($fs-content-small);
+}
+
+.smaller {
+  @include fs-responsive($fs-content-smaller);
+}
+
+.large {
+  @include fs-responsive($fs-content-large);
+}
+
+blockquote,
+.blockquote {
+  @include fs-responsive($fs-bq);
+  font-weight: $fw-regular;
+  margin: 1em 2em;
+
+  p {
+    @include fs-responsive($fs-bq);
+    font-weight: $fw-regular;
+  }
+}
+
+cite,
+.cite {
+  @include fs-responsive($fs-content-p);
+  color: $clr-grey-text;
+  display: block;
+  font-style: normal;
+}
+
+ul {
+  @include fs-responsive($fs-content-p);
+  padding-left: 0;
+  margin-top: 1em;
+  list-style: none;
+
+  li {
+    line-height: 1.75;
+  }
+
+  ol,
+  ul {
+    margin-top: 0;
+    padding-left: 1.25em;
+  }
+}
+
+ol {
+  @include fs-responsive($fs-content-p);
+  padding-left: 0;
+  margin-top: 1em;
+  list-style: none;
+  counter-reset: item;
+
+  li {
+    counter-increment: item;
+    margin-bottom: 1em;
+
+    &:before {
+      content: counter(item);
+      color: $clr-blue;
+      margin-right: 0.5em;
+      font-weight: $fw-bold;
+    }
+  }
+}
+
+hr {
+  color: #333333;
+}
+
+table {
+  @include fs-responsive($fs-content-p);
+}
+
+.message {
+  padding: 1em 0.75em;
+  background: #ebebeb;
+  border: 1px solid #c0c0c0;
+
+  &--success {
+    background: #e5fdeb;
+    border-color: #99d08f;
+    color: #246835;
+  }
+
+  &--error {
+    background: #fde5e5;
+    border-color: #d08f8f;
+    color: #c60c0c;
+  }
+
+  &--existing-email {
+    display: none;
+
+    .message__content {
+      @include fs-static(16);
+      vertical-align: middle;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &--show {
+    display: block;
+  }
+}
+
+.button--right {
+  margin-left: auto;
+}
+
+.message__title {
+  @include fs-static(14);
+  font-weight: $fw-bold;
+  margin-bottom: 0;
+
+  &:before {
+    content: '\f057';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+}
+
+.message__content {
+  @include fs-static(14);
+  margin-bottom: 0;
+}
+
+// Helper Classes
+
+.reversed {
+  display: inline-block;
+  padding: 0.75em 1em;
+
+  cite,
+  .cite {
+    color: $clr-white;
+  }
+
+  &--teal {
+    background: $clr-teal;
+    color: $clr-white;
+  }
+
+  &--blue {
+    background: $clr-blue;
+    color: $clr-white;
+  }
+
+  &--orange {
+    background: $clr-orange;
+    color: $clr-white;
+  }
+
+  &--purple {
+    background: $clr-orange;
+    color: $clr-white;
+  }
+}
+
+.underline {
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 0.5em;
+}
+
+.underline--flex {
+  display: flex;
+  align-items: baseline;
+}
+
+.underline__right {
+  @include fs-static(18);
+  @include standard-link-reverse($clr-blue);
+  margin-left: auto;
+  min-width: 180px;
+  text-align: right;
+
+  @include respond-max($bp-tablet-lrg-min) {
+    display: none;
+  }
+}
+
+.center-text {
+  text-align: center;
+}

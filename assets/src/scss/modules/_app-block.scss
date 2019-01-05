@@ -1,0 +1,58 @@
+/*
+  APP BLOCK
+  Block with links to app download pages
+*/
+
+.app-block {
+  background: $clr-grey-light;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  @include respond-min($bp-tablet-wide-min) {
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+  }
+
+  @include respond-min($bp-desktop-min) {
+    max-width: 75%;
+    margin: auto;
+  }
+}
+
+.app-block__image {
+  img {
+    max-height: 150px;
+    width: auto;
+    margin: 0 auto 1em auto;
+
+    @include respond-min($bp-tablet-wide-min) {
+      margin: 0;
+      max-height: 180px;
+    }
+
+    @include respond-min($bp-desktop-min) {
+      max-height: 200px;
+    }
+  }
+}
+
+.app-block__content {
+  text-align: center;
+  flex: 1;
+}
+
+.app-block__content__link {
+  display: inline-block;
+  margin: 0 0.5em;
+
+  @include respond-min($bp-tablet-wide-min) {
+    margin: 0 1em;
+  }
+
+  img {
+    max-height: 50px;
+  }
+}

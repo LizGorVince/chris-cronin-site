@@ -1,0 +1,33 @@
+/*
+  COLOURS
+*/
+
+// Base Colours
+$clr-white:      #ffffff;
+$clr-black:      #000000;
+
+// Brand Colours TODO take these out - not needed
+$clr-blue:        #0070b9;
+$clr-orange:      #e37222;
+$clr-teal:        #00b2a9;
+$clr-purple:      #c50084;
+$clr-lavender:    #7D5CC6;
+$clr-yellow:      #f0ab00;
+$clr-grey-light:  #f3f4f4;
+$clr-grey-med:    #e3e4e4;
+$clr-grey-dark:   #747678;
+$clr-grey-text:   #363636;
+
+// Form Colours
+$clr-red:         #cd202c;
+$clr-green:       #69be28;
+
+// Others
+$clr-grey-border: #c9c9c9;
+$clr-grey-form:   #8a8a8a;
+$clr-body: $clr-grey-text;
+
+// Colour Helpers
+.text-blue {
+  color: $clr-blue;
+}

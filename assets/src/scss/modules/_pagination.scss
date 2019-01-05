@@ -1,0 +1,80 @@
+/*
+  PAGINATION
+  Page pagination block
+*/
+
+.pagination {
+  @include fs-static(16);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1em 0;
+  width: 100%;
+
+  a {
+    line-height: 32px;
+  }
+}
+
+.pagination__pages {
+  text-align: center;
+  flex: 1;
+}
+
+.pagination__link--previous {
+  width: 100px;
+
+  a {
+    &:before {
+      content: "\f104";
+      font-family: "Font Awesome 5 Free";
+      @include fs-static(13);
+      font-weight: 900;
+      display: inline-block;
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.pagination__link--next {
+  width: 100px;
+  text-align: right;
+
+  a {
+    &:after {
+      content: "\f105";
+      font-family: "Font Awesome 5 Free";
+      @include fs-static(13);
+      font-weight: 900;
+      display: inline-block;
+      margin-left: 0.5em;
+    }
+  }
+
+}
+
+.pagination__pages__link {
+  @include standard-hover;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  display: inline-block;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: $clr-grey-light;
+  }
+}
+
+.pagination__pages__link--active {
+  background: $clr-teal;
+  color: $clr-white;
+  font-weight: $fw-bold;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: $clr-teal;
+  }
+}

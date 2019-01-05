@@ -1,0 +1,76 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="breadcrumb">
+  <div class="container">
+    <ul class="breadcrumb__list">
+      <li>BMJ CDS:</li>
+      <li><a href="{{ site.url }}">Home</a></li>
+      <span class="breadcrumb__divide">»</span>
+      <li><a href="/{% if icl_language_code != "en" %}/{{ icl_language_code }}{% endif %}news">News</a></li>
+      <span class="breadcrumb__divide">»</span>
+      <li>{{ post.title }}</li>
+    </ul>
+  </div>
+</div>
+
+{% if post.content %}
+<div class="content">
+  <div class="container">
+    <h1 class="underline">{{ post.title }}</h1>
+    {{ post.content }}
+  </div>
+</div>
+{% endif %}
+
+<div class="content">
+  <div class="container">
+    <div class="posts__list">
+
+      {% if recent_posts %}
+        {% for recent_post in recent_posts %}
+
+          {% set post_vars = {
+            'post_url' : recent_post.link,
+            'post_title' : recent_post.title,
+            'thumbnail_url' : recent_post.thumbnail.src,
+            'category' : recent_post.category,
+            'category_link' : recent_post.category.link,
+            'preview' : recent_post.preview,
+          } %}
+          {% include "components/post.twig" with post_vars %}
+
+        {% endfor %}
+      {% endif %}
+
+    </div>
+
+    <div class="pagination">
+      <div class="pagination__link pagination__link--previous">
+        {% if recent_posts.pagination.prev %}
+          <a href="{{ recent_posts.pagination.prev.link }}">Previous</a>
+        {% endif %}
+      </div>
+
+      <div class="pagination__pages">
+        {% for page in recent_posts.pagination.pages %}
+          {% if page.link %}
+            <a class="pagination__pages__link" href="{{ page.link }}">{{ page.title }}</a>
+          {% else %}
+            <a class="pagination__pages__link pagination__pages__link--active">{{ page.title }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="pagination__link pagination__link--next">
+        {% if recent_posts.pagination.next %}
+          <a href="{{ recent_posts.pagination.next.link }}">Next</a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

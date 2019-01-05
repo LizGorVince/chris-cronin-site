@@ -1,0 +1,84 @@
+/*
+  ACCOUNT LIST
+  Dropdown list of links for account section
+*/
+
+$fs-account-list: (g : 14, gd : 17);
+
+.account-list {
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+}
+
+.account-list--open {
+  .account-list__dropdown {
+    display: block;
+  }
+}
+
+.account-list__link {
+  @include fs-responsive($fs-account-list);
+  color: $clr-grey-text;
+  border: 1px solid transparent;
+  padding: 0.75em 1.25em;
+  display: inline-block;
+
+  &:hover,
+  &:focus,
+  &:active,
+  .account-list--open & {
+    background: $clr-white;
+    border-color: $clr-grey-med;
+  }
+
+  &:before {
+    content: "\f406";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: $clr-blue;
+    font-size: 18px;
+    margin-right: 10px;
+    pointer-events: none;
+  }
+
+  &:after {
+    content: "\f078";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: $clr-teal;
+    font-size: 14px;
+    margin-left: 10px;
+    pointer-events: none;
+  }
+}
+
+.account-list__dropdown {
+  display: none;
+  left: 0;
+  width: 100%;
+  background: $clr-white;
+  border: 1px solid $clr-grey-med;
+  border-top: 0;
+  padding: 0.5em 0;
+
+  ul {
+    @include list-reset;
+
+    li {
+      @include list-item-reset;
+
+      a {
+        @include fs-responsive($fs-account-list);
+        color: $clr-grey-text;
+        padding: 0.5em 1.25em;
+        width: 100%;
+        display: inline-block;
+      }
+    }
+  }
+
+  @include respond-min($bp-tablet-lrg-min) {
+    position: absolute;
+  }
+}

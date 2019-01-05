@@ -1,0 +1,25 @@
+{% if not hide_block %}
+
+<div class="featured-block">
+  <div class="container">
+
+    {% if featured_icon %}
+      <div class="featured-block__icon">
+        <img src="{{ featured_icon.url }}" alt="{{ featured_icon.title }}">
+      </div>
+    {% endif %}
+
+    <div class="featured-block__text">
+      {% if featured_title %}
+        <h3>{{ featured_title }}</h3>
+      {% endif %}
+      <p>{{ featured_text }}
+      {% if featured_link %}
+        <a href="{{ featured_link.url }}" target="{{ featured_link.target }}" title="{{ featured_link.title }}">{{ featured_link.title }}</a>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+{% endif %}

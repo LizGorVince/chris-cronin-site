@@ -1,0 +1,40 @@
+{% if not hide_block %}
+
+  {% if block_title_image %}
+    <div class="block-title">
+  {% endif %}
+
+  {% if block_title %}
+    <div class="block-title__top">
+      {% if block_title_image %}
+        <span class="block-title__image"><img src="{{ block_title_image.url }}" alt="{{ block_title_image.title }}" /></span>
+      {% endif %}
+      <h2 class="underline text-blue">{{ block_title_text }}</h2>
+    </div>
+  {% endif %}
+
+  {% if links %}
+    <div class="article-list">
+      {% for link in links %}
+        <div class="post post--list">
+          <div class="post__thumb">
+            <a href="{{ link.link_url.url }}">
+              <img src="{{ link.link_thumb.url }}">
+            </a>
+          </div>
+          <div class="post__excerpt">
+            <a href="{{ link.link_url.url }}" target="{{ link.link_url.target }}">
+              <p class="large"><strong>{{ link.link_url.title }}</strong></p>
+            </a>
+            <em><strong>{{ link.link_location }}</strong></em>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if block_title_image %}
+    </div>
+  {% endif %}
+
+{% endif %}

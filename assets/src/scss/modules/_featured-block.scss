@@ -1,0 +1,57 @@
+/*
+  FEATURED BLOCK
+  Block to display a featured post
+*/
+
+.featured-block {
+  background: $clr-grey-light;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  text-align: center;
+
+  @include respond-min($bp-tablet-lrg-min) {
+    text-align: left;
+  }
+
+  .container {
+    @include respond-min($bp-tablet-lrg-min) {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.featured-block__icon {
+  @include respond-min($bp-tablet-lrg-min) {
+    margin-right: 1em;
+  }
+
+  img {
+    max-width: 35px;
+    max-height: 35px;
+    display: block;
+    margin: auto;
+
+    @include respond-min($bp-tablet-lrg-min) {
+      max-width: 45px;
+      max-height: 45px;
+    }
+  }
+}
+
+.featured-block__text {
+  h3 {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+    @include fs-responsive($fs-content-small);
+  }
+
+  a {
+    @include standard-link($clr-blue);
+    @include fs-responsive($fs-content-small);
+    margin-left: 0.25em;
+  }
+}

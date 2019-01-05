@@ -1,0 +1,16 @@
+<form id="log_out_form" action="{{ form_action }}" method="post">
+  <input type="hidden" name="action" value="submit-log-out" />
+  <div class="account-list">
+    <a class="account-list__link">{{ session_email }}</a>
+      <div class="account-list__dropdown">
+      <ul>
+        <li>
+          <a href="https://myaccount.bmj.com/myaccount/account/home-view.html?fwdUrl=https://cds.bmj.com" target="_blank">My Account</a>
+        </li>
+        <li>
+          <a id="logout" onclick="log_out_form.submit();" href="#">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</form>

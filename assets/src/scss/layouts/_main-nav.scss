@@ -1,0 +1,253 @@
+/*
+  MAIN NAV
+  Global main navigation
+*/
+
+$fs-main-nav: ( g : 17, gtw : 20 );
+$fs-sub-nav: ( g : 15, gtw : 14, gd : 15 );
+
+.main-nav {
+  max-height: 0;
+  overflow: hidden;
+
+  @include respond-min($bp-tablet-lrg-min) {
+    max-height: inherit;
+    overflow: visible;
+  }
+
+  .header--open & {
+    max-height: inherit;
+    overflow: visible;
+  }
+}
+
+.main-nav__list {
+  @include list-reset;
+  padding-top: 1em;
+
+  @include respond-min($bp-tablet-lrg-min) {
+    display: flex;
+    padding-top: 0;
+  }
+}
+
+.main-nav__list__item {
+  @include list-item-reset;
+  position: relative;
+
+  > a {
+    @include fs-responsive($fs-main-nav);
+    padding: 1.25em 1.5em;
+    display: block;
+    background: $clr-white;
+    border-bottom: 1px solid $clr-grey-med;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: $clr-grey-light;
+      color: $clr-blue;
+      @include standard-hover;
+
+      @include respond-min($bp-tablet-lrg-min) {
+        background: $clr-blue;
+        color: $clr-white;
+      }
+    }
+
+    &:after {
+      content: "\f054";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      font-size: 16px;
+      pointer-events: none;
+      position: absolute;
+      right: 24px;
+    }
+
+    @include respond-min($bp-tablet-lrg-min) {
+      background: inherit;
+      border-bottom: 0;
+      padding: 0.75em 1.5em;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.main-nav__list__item__click {
+  width: 50%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 68px;
+
+  @include respond-min($bp-tablet-lrg-min) {
+    display: none;
+  }
+}
+
+.main-nav__list__item--open {
+  .main-nav__list__item__subnav {
+    display: block;
+  }
+
+  > a {
+    background: $clr-blue;
+    color: $clr-white;
+    position: relative;
+
+    &:after {
+      transform: rotate(90deg);
+    }
+  }
+
+  &.main-nav__list__item--product {
+    a {
+      &:after {
+        transform: none;
+      }
+    }
+  }
+}
+
+.main-nav__list__item__subnav {
+  @include list-reset;
+  width: 100%;
+  right: 0;
+  background: $clr-grey-light;
+  display: none;
+  padding-left: 1em;
+  z-index: 1000;
+
+  @include respond-min($bp-tablet-lrg-min) {
+    position: absolute;
+    min-width: 250px;
+    border: 1px solid $clr-grey-med;
+    border-top: 4px solid $clr-blue;
+    padding-left: 0;
+    background: $clr-white;
+  }
+
+  @include respond-min($bp-desktop-min) {
+    min-width: 300px;
+  }
+
+  @include respond-min($bp-tablet-lrg-min) {
+    &:before {
+      content: '';
+      position: absolute;
+      height: 4px; width: 100%;
+      display: block;
+      top: 0;
+    }
+  }
+
+  li {
+    @include list-item-reset;
+
+    a {
+      @include fs-responsive($fs-sub-nav);
+      display: inline-block;
+      width: 100%;
+      padding: 1em 1.25em;
+      border-bottom: 1px solid $clr-grey-med;
+      position: relative;
+      background: $clr-white;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: $clr-grey-light;
+        @include standard-hover;
+      }
+
+      &:after {
+        content: "\f054";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 14px;
+        pointer-events: none;
+        position: absolute;
+        right: 25px;
+
+        @include respond-min($bp-tablet-lrg-min) {
+          right: 20px;
+        }
+      }
+    }
+
+    @include respond-min($bp-tablet-lrg-min) {
+      &:last-of-type {
+        a {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.main-nav__list__item--product {
+  a {
+    &:hover,
+    &:focus,
+    &:active {
+      color: $clr-white;
+    }
+  }
+}
+
+.main-nav__list__item--purple {
+  a {
+    background: $clr-purple;
+    color: $clr-white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: lighten($clr-purple, 5%);
+    }
+  }
+}
+
+.main-nav__list__item--blue {
+  a {
+    background: $clr-blue;
+    color: $clr-white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: lighten($clr-blue, 5%);
+    }
+  }
+}
+
+.main-nav__list__item--orange {
+  a {
+    background: $clr-orange;
+    color: $clr-white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: lighten($clr-orange, 5%);
+    }
+  }
+}
+
+.main-nav__list__item--teal {
+  a {
+    background: $clr-teal;
+    color: $clr-white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: lighten($clr-teal, 5%);
+    }
+  }
+}

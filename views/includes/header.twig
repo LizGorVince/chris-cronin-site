@@ -1,0 +1,13 @@
+<header class="site-header">
+  {% block header %}
+  <div class="site-header__logo">
+    <a href="{{ site.url }}" alt="{{ site.title }}, {{ site.description }}">
+    {{ source('/assets/img/logo/chris-cronin-logo.svg') }}
+    </a>
+  </div>
+  {% endblock %}
+  
+  {% include 'includes/nav.twig' %}
+</header>
+
+<div class="main">

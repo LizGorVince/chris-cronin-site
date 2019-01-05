@@ -1,0 +1,41 @@
+{% if not hide_block %}
+
+<div class="quote-block">
+  <div class="container">
+
+    {% if block_title_image %}
+      <div class="block-title">
+    {% endif %}
+
+    {% if block_title %}
+      <div class="block-title__top">
+        {% if block_title_image %}
+          <span class="block-title__image"><img src="{{ block_title_image.url }}" alt="{{ block_title_image.title }}" /></span>
+        {% endif %}
+        <h2 class="underline text-blue">{{ block_title_text }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="quote-block__inner">
+      {% if quote_image %}
+        <div class="quote-block__image">
+          <img src="{{ quote_image.url }}" alt="{{ quote_image.title }}"/>
+        </div>
+      {% endif %}
+
+      <div class="quote-block__text">
+        <blockquote>
+          <p>&ldquo;{{ quote_text }}&rdquo;</p>
+          <cite>{{ quote_cite }}</cite>
+        </blockquote>
+      </div>
+    </div>
+
+    {% if block_title_image %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endif %}

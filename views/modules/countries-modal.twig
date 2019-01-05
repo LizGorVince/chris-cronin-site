@@ -1,0 +1,62 @@
+{% if status == "loggedout" %}
+
+<div class="modal micromodal-slide" id="countries-modal" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+      <div class="modal__header">
+        <h2 class="modal__title">Choose Your Region</h2>
+        <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      </div>
+      <div class="modal__content">
+        <div class="modal__content__row">
+          <div class="country__link">
+            <a href="/az" data-country="az">
+              <img src="{{ site.theme.link }}/assets/img/flags/flag-az.jpg">
+              <span>{{ static.azerbaijan }}</span>
+            </a>
+          </div>
+          <div class="country__link">
+            <a href="/ge" data-country="ge">
+              <img src="{{ site.theme.link }}/assets/img/flags/flag-ge.jpg">
+              <span>{{ static.georgia }}</span>
+            </a>
+          </div>
+          <div class="country__link">
+            <a href="/iq" data-country="iq">
+              <img src="{{ site.theme.link }}/assets/img/flags/flag-iq.jpg">
+              <span>{{ static.iraq }}</span>
+            </a>
+          </div>
+          <div class="country__link">
+            <a href="/jo" data-country="jo">
+              <img src="{{ site.theme.link }}/assets/img/flags/flag-jo.jpg">
+              <span>{{ static.jordan }}</span>
+            </a>
+          </div>
+        </div>
+        <div class="modal__content__row">
+          <div class="country__link">
+            <a href="/uk" data-country="uk">
+              <img src="{{ site.theme.link }}/assets/img/flags/flag-uk.jpg">
+              <span>{{ static.ukraine }}</span>
+            </a>
+          </div>
+          <div class="country__link">
+            <a href="/vi" data-country="vi">
+              <img src="{{ site.theme.link }}/assets/img/flags/flag-vn.jpg">
+              <span>{{ static.vietnam }}</span>
+            </a>
+          </div>
+          <div class="country__link">
+            <a href="/" data-country="gb">
+              <img src="{{ site.theme.link }}/assets/img/flags/flag-gb.jpg">
+              <span>{{ static.international }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}

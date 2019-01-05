@@ -1,0 +1,71 @@
+/*
+  QUOTE BLOCK
+  Block displaying a full-width quote and image
+*/
+
+.quote-block {
+  background: $clr-grey-light;
+  padding: 3em 0 1em 0;
+  position: relative;
+  margin-top: 3em;
+
+  @include respond-min($bp-tablet-lrg-min) {
+    padding: 2em 0;
+    margin-top: 0;
+  }
+}
+
+.quote-block__inner {
+  @include respond-min($bp-tablet-lrg-min) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.quote-block__image {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border: 3px solid $clr-teal;
+  display: block;
+  overflow: hidden;
+  box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.24);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-top: -2.5em;
+  margin-left: -2.5em;
+
+  @include respond-min($bp-tablet-lrg-min) {
+    position: relative;
+    margin: 0;
+    left: auto;
+    flex: 0 0 6.5em;
+    width: 6.5em;
+    height: 6.5em;
+  }
+
+  @include respond-min($bp-desktop-min) {
+    width: 9em;
+    height: 9em;
+    flex: 0 0 9em;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.quote-block__text {
+  width: fit-content;
+
+  blockquote,
+  cite {
+    text-align: center;
+
+    @include respond-min($bp-tablet-lrg-min) {
+      text-align: left;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<body class="{{body_class}}" data-template="base.twig">
+
+  <div class="main__plus-nav wrapper">
+    <header class="site-header">
+      {% block header %}
+      <div class="header__logo">
+        <a href="{{ site.url }}" alt="{{ site.title }}, {{ site.description }}">
+        {{ source('/assets/img/logo/chris-cronin-logo.svg') }}
+        </a>
+      </div>
+      {% endblock %}
+      {% include 'includes/nav.twig' %}
+    </header>
+
+    <main role="main" class="site-main">
+        <div class="{{sidebar_class}}">
+          {% block content %}
+            Sorry, no content
+          {% endblock %}
+        </div>
+      {% if sidebar %}
+        <aside class="main-sidebar">
+          {{sidebar}}
+        </aside>
+      {% endif %}
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    {% block footer %}
+        <div class="site-footer__copy">{% include 'footer.twig' %}</div>
+    {% endblock %}
+  </footer>
+
+  {{ function('wp_footer') }}
+
+</body>
+</html>

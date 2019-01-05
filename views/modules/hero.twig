@@ -1,0 +1,102 @@
+{% if not hide_block %}
+
+<div class="hero {% if hero_type == 'slider' %}hero--slider{% endif %}">
+
+  {% if hero_type == 'slider' %}
+    <div class="hero__slider">
+      {% for slide in hero_slides %}
+        <div class="hero__slider__slide">
+          <div class="hero__image">
+            <picture>
+              <source srcset="{{ slide.slide_image.url }}, {{ slide.slide_image_retina.url }} 2x" media="(min-width: 0)">
+              <img src="{{ slide.slide_image_retina.url }}" alt="{{ slide.slide_image_retina.title }}">
+            </picture>
+          </div>
+
+          {% if ( slide.slide_title or slide.slide_copy or slide.slide_cta ) %}
+            <div class="hero__content">
+              <div class="container">
+                <div class="g-wrap g-wrap--flex g-wrap--flex--items-center" style="overflow-y: hidden;">
+                  <div class="g-col gt-col-2-3 gd-col-1-2">
+                    <div class="hero__content__inner">
+                      {% if slide.slide_title %}
+                        <h2 class="hero__content__title">{{ slide.slide_title }}</h2>
+                      {% endif %}
+                      {% if slide.slide_copy %}
+                        <p class="hero__content__copy">{{ slide.slide_copy }}</p>
+                      {% endif %}
+                      {% if slide.slide_cta %}
+                        <div class="hero__content__actions">
+                          <a href="{{ slide.slide_cta.url }}" class="button button--responsive button--{{ hero_cta_colour }}" target="{{ slide.slide_cta.target }}" title="{{ slide.slide_cta.title }}">{{ slide.slide_cta.title }}</a>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="hero__arrows">
+      <div class="container">
+        <span class="hero__arrows__prev slick-arrow"><i class="fas fa-chevron-left"></i></span>
+        <span class="hero__arrows__next slick-arrow"><i class="fas fa-chevron-right"></i></span>
+      </div>
+    </div>
+
+  {% else %}
+
+    <div class="hero__image">
+
+      {% if hero_images %}
+        <picture>
+          {% for image in hero_images %}
+            {% if image.retina_bg_image %}
+              <source srcset="{{ image.bg_image.url }}, {{ image.retina_bg_image.url }} 2x" media="(min-width: {{ image.responsive_width }})" />
+            {% else %}
+              <source srcset="{{ image.bg_image.url }}" media="(min-width: {{ image.responsive_width }})" />
+            {% endif %}
+          {% endfor %}
+
+          {% for image in hero_images %}
+            {% if image.fallback_image %}
+              <img src="{{ image.bg_image.url }}" alt="{{ image.bg_image.title }}" />
+            {% endif %}
+          {% endfor %}
+        </picture>
+      {% endif %}
+
+    </div>
+
+    {% if ( hero_title or hero_copy or hero_cta ) %}
+      <div class="hero__content">
+        <div class="container">
+          <div class="g-wrap g-wrap--flex g-wrap--flex--items-center" style="overflow-y: hidden;">
+            <div class="g-col gt-col-2-3 gd-col-1-2">
+              <div class="hero__content__inner hero__content__inner--{{ hero_bg_colour }}">
+                {% if hero_title %}
+                  <h2 class="hero__content__title">{{ hero_title }}</h2>
+                {% endif %}
+                {% if hero_copy %}
+                  <p class="hero__content__copy">{{ hero_copy }}</p>
+                {% endif %}
+                {% if hero_cta %}
+                  <div class="hero__content__actions">
+                    <a href="{{ hero_cta.url }}" title="{{ hero_cta.title }}" target="{{ hero_cta.target }}" class="button button--responsive button--{{ hero_cta_colour }}">{{ hero_cta.title }}</a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+  {% endif %}
+</div>
+
+{% endif %}

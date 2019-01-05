@@ -1,0 +1,50 @@
+{% if not hide_block %}
+
+  {% if block_title_image %}
+    <div class="block-title">
+  {% endif %}
+
+  {% if block_title %}
+    <div class="block-title__top">
+      {% if block_title_image %}
+        <span class="block-title__image"><img src="{{ block_title_image.url }}" alt="{{ block_title_image.title }}" /></span>
+      {% endif %}
+      {% if block_title_text %}
+        <h2 class="underline text-blue">{{ block_title_text }}</h2>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if recent_posts %}
+    <div class="article-list">
+
+      {% for article in recent_posts %}
+        <div class="post post--list post--{{ article.category|lower }}">
+          <div class="post__thumb">
+            <a href="{{ article.link }}">
+              <img src="{{ article.thumbnail.src }}">
+            </a>
+          </div>
+          <div class="post__excerpt">
+            <a href="{{ article.link }}">
+              <p><strong>{{ article.title }}</strong></p>
+            </a>
+            {{ article.preview.length(10).read_more(false) }}
+          </div>
+        </div>
+      {% endfor %}
+
+      {% if articles_button %}
+        <div class="article-list__button">
+          <a class="button button--large button--responsive button--fluid button--{{ articles_button_colour }}" href="{{ articles_button.url }}" title="{{ articles_button.title }}" target="{{ articles_button.target }}">{{ articles_button.title }}</a>
+        </div>
+      {% endif %}
+
+    </div>
+  {% endif %}
+
+  {% if block_title_image %}
+    </div>
+  {% endif %}
+
+{% endif %}

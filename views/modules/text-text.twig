@@ -1,0 +1,63 @@
+{% if not hide_block %}
+
+<div class="content {% if padding_top %}content--no-top{% endif %} {% if padding_bottom %}content--no-bottom{% endif %}">
+
+  <div class="container">
+    {% if fn('is_front_page') %}
+      <h2 class="center-text underline" style="margin-bottom: 0;">{{ text_text_title }}</h2>
+    {% else %}
+      <h2 class="underline text-blue" style="margin-bottom: 0;">{{ text_text_title }}</h2>
+    {% endif %}
+
+    <div class="content--borders {% if text_text_title %}content--borders--notop{% endif %} {% if text_text_clean %}content--borders--noborders{% endif %}">
+
+      <div class="g-wrap g-wrap--flex">
+        {% if reverse %}
+
+          <div class="g-col gtw-col-1-2">
+            <div class="border-block">
+              {{ text_text_second }}
+              {% if text_text_second_button %}
+                <a class="button button--responsive button--center button--large button--{{ text_text_second_colour }}" href="{{ text_text_second_button.url }}" target="{{ text_text_second_button.target }}">{{ text_text_second_button.title }}</a>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="g-col gtw-col-1-2">
+            <div class="border-block">
+              {{ text_text_first }}
+              {% if text_text_first_button %}
+                <a class="button button--responsive button--center button--large button--{{ text_text_first_colour }}" href="{{ text_text_first_button.url }}" target="{{ text_text_first_button.target }}">{{ text_text_first_button.title }}</a>
+              {% endif %}
+            </div>
+          </div>
+
+        {% else %}
+
+          <div class="g-col gtw-col-1-2">
+            <div class="border-block">
+              {{ text_text_first }}
+              {% if text_text_first_button %}
+                <a class="button button--responsive button--center button--large button--{{ text_text_first_colour }}" href="{{ text_text_first_button.url }}" target="{{ text_text_first_button.target }}">{{ text_text_first_button.title }}</a>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="g-col gtw-col-1-2">
+            <div class="border-block">
+              {{ text_text_second }}
+              {% if text_text_second_button %}
+                <a class="button button--responsive button--center button--large button--{{ text_text_second_colour }}" href="{{ text_text_second_button.url }}" target="{{ text_text_second_button.target }}">{{ text_text_second_button.title }}</a>
+              {% endif %}
+            </div>
+          </div>
+
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endif %}

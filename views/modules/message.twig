@@ -1,0 +1,17 @@
+<div class="message {{ class }}">
+  <div class="container">
+
+    {% if title %}
+      <div class="message__title">
+        {{ title }}
+      </div>
+    {% endif %}
+
+    {% if message %}
+      <div class="message__content">
+        {{ message }}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
