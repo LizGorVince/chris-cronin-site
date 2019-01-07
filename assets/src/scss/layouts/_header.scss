@@ -3,8 +3,10 @@
   Global header
 */
 .site-header {
+  height: 100%;
 
   @include bp(md){
+
     position: fixed;
     width: 20%;
     background: $white;

@@ -6,6 +6,11 @@
 // Import all our layouts here. Don't add styles to this file, keep everything separated into the partials - it helps to keep the code in reusable chunks.
 //
 // ----
+@import "vendor/normalize";
+@import "vendor/slick";
+
+
+
 @import "utilities/variables";
 @import "utilities/mixins";
 @import "utilities/helpers";

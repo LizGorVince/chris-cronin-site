@@ -38,7 +38,7 @@ img {
 // Main Site Content
 // ---
 
-.wrapper {
+.site__wrapper {
 	max-width: $screen-md; // I'm using a pretty narrow wrapper, you might want this to be $screen-lg depending on your layout.
 	width: 93%;
 	margin: 0 auto;
@@ -62,5 +62,3 @@ img {
 // ---
 // Misc Utilities
 // ---
-
-
